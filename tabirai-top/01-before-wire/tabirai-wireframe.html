@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>たびらい トップページ ワイヤーフレーム</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background: #ffffff;
+            color: #333;
+        }
+        
+        /* ワイヤーフレーム用のスタイル */
+        .wireframe-box {
+            border: 2px solid #999;
+            padding: 20px;
+            margin: 10px 0;
+            background: #fff;
+        }
+        
+        .wireframe-text {
+            border: 1px dashed #ccc;
+            padding: 10px;
+            margin: 5px 0;
+            background: #fafafa;
+        }
+        
+        .wireframe-image {
+            border: 1px solid #999;
+            background: repeating-linear-gradient(
+                45deg,
+                #f0f0f0,
+                #f0f0f0 10px,
+                #e0e0e0 10px,
+                #e0e0e0 20px
+            );
+            padding: 40px;
+            text-align: center;
+            color: #666;
+        }
+        
+        .wireframe-button {
+            border: 2px solid #333;
+            padding: 15px 40px;
+            text-align: center;
+            margin: 20px auto;
+            max-width: 300px;
+            font-weight: bold;
+        }
+        
+        /* レイアウト */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section {
+            padding: 40px 0;
+            border-bottom: 3px solid #ddd;
+        }
+        
+        .header {
+            border-bottom: 2px solid #333;
+            padding: 20px 0;
+        }
+        
+        .footer {
+            border-top: 2px solid #333;
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        /* グリッドレイアウト */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .grid-6 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        
+        /* テキストスタイル */
+        h1 {
+            font-size: 32px;
+            margin: 20px 0;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #333;
+        }
+        
+        h2 {
+            font-size: 28px;
+            margin: 20px 0;
+            padding: 15px;
+            border: 2px solid #666;
+            text-align: center;
+        }
+        
+        h3 {
+            font-size: 20px;
+            margin: 15px 0;
+            padding: 10px;
+            border-left: 4px solid #333;
+        }
+        
+        /* レスポンシブ */
+        @media (max-width: 768px) {
+            .grid-2,
+            .grid-3,
+            .grid-4,
+            .grid-6 {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* ユーティリティ */
+        .text-center {
+            text-align: center;
+        }
+        
+        .mt-20 {
+            margin-top: 20px;
+        }
+        
+        .mb-20 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ヘッダー -->
+    <header class="header">
+        <div class="container">
+            <div class="grid-2">
+                <div class="wireframe-box">
+                    [ロゴ] たびらい
+                </div>
+                <div class="wireframe-box text-center">
+                    [ナビゲーション]<br>
+                    観光情報 | ツアー | ホテル・旅館 | レンタカー | アクティビティ | バスツアー
+                </div>
+            </div>
+            <div class="wireframe-box mt-20">
+                [サブナビ]<br>
+                会員登録 | ログイン | たびらいの紹介 | 利用規約 | サポート・ヘルプ | 予約情報・キャンセル
+            </div>
+        </div>
+    </header>
+
+    <!-- セクション1: メインビジュアル（スライダー） -->
+    <section class="section" style="background: #f9f9f9;">
+        <div class="container">
+            <div class="wireframe-image" style="min-height: 400px;">
+                [メインビジュアル スライダー]<br><br>
+                画像1: 現地発！ローカル体験<br>
+                石垣島で離島巡り！絶対行くべき周辺の離島6選<br><br>
+                [← 前へ] [次へ →]<br><br>
+                [● ● ● ● ● ●] スライドインジケーター
+            </div>
+            
+            <div class="wireframe-box mt-20">
+                <div class="wireframe-image" style="padding: 30px;">
+                    [バナー広告]<br>
+                    たびらいリニューアル<br>
+                    無料宿泊体験モニター募集中！
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション2: サービスナビゲーション -->
+    <section class="section">
+        <div class="container">
+            <h2>国内ローカル旅行は<br>たびらいに<br>おまかせ！</h2>
+            
+            <div class="grid-6 mt-20">
+                <div class="wireframe-box text-center">
+                    [アイコン: 本]<br>
+                    <h3>観光情報</h3>
+                    <div class="wireframe-text">
+                        現地が選ぶ旬な観光情報
+                    </div>
+                </div>
+                
+                <div class="wireframe-box text-center">
+                    [アイコン: ホテル]<br>
+                    <h3>ホテル・旅館ガイド</h3>
+                    <div class="wireframe-text">
+                        ローカル案内が選ぶ<br>厳選宿
+                    </div>
+                </div>
+                
+                <div class="wireframe-box text-center">
+                    [アイコン: 車]<br>
+                    <h3>レンタカー予約</h3>
+                    <div class="wireframe-text">
+                        全国で最安値を<br>比較・予約
+                    </div>
+                </div>
+                
+                <div class="wireframe-box text-center">
+                    [アイコン: スーツケース]<br>
+                    <h3>ツアー予約</h3>
+                    <div class="wireframe-text">
+                        北海道・関東・関西(近畿)<br>・九州・沖縄の<br>お得なパッケージツアー
+                    </div>
+                </div>
+                
+                <div class="wireframe-box text-center">
+                    [アイコン: アクティビティ]<br>
+                    <h3>アクティビティ予約</h3>
+                    <div class="wireframe-text">
+                        アクティビティ<br>(遊び・体験)プランを<br>一覧で比較・予約！
+                    </div>
+                </div>
+                
+                <div class="wireframe-box text-center">
+                    [アイコン: バス]<br>
+                    <h3>バスツアー予約</h3>
+                    <div class="wireframe-text">
+                        あなたの街から出発、<br>人気の観光バスツアー！
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション3: サイト特徴説明 -->
+    <section class="section" style="background: #e8f4f8;">
+        <div class="container">
+            <h2>たびらいは現地発信の旅行予約サイトです。</h2>
+            
+            <div class="grid-2 mt-20">
+                <div class="wireframe-box">
+                    <div class="wireframe-image" style="padding: 30px;">
+                        [アイコン: 虫眼鏡]
+                    </div>
+                    <h3>旅行プランの比較・予約</h3>
+                    <div class="wireframe-text">
+                        選りすぐりの旅行プランを比較して予約できる
+                    </div>
+                </div>
+                
+                <div class="wireframe-box">
+                    <div class="wireframe-image" style="padding: 30px;">
+                        [アイコン: 地図]
+                    </div>
+                    <h3>現地編集の観光情報</h3>
+                    <div class="wireframe-text">
+                        現地編集の切り口による観光情報が満載
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wireframe-box mt-20 text-center">
+                <div class="wireframe-text" style="font-size: 18px;">
+                    たびらい会員だけが予約できる限定プラン（アクティビティ）や、<br>
+                    キャンペーンの利用（レンタカー）が可能！
+                </div>
+                
+                <div class="wireframe-text mt-20" style="font-size: 20px;">
+                    たびらい会員登録は入会・年会費無料!
+                </div>
+                
+                <div class="wireframe-button mt-20">
+                    たびらい会員登録
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション4: バナー広告 -->
+    <section class="section">
+        <div class="container">
+            <div class="wireframe-box">
+                <div class="wireframe-image" style="padding: 40px;">
+                    [広告バナー]<br>
+                    会員限定 沖縄＆北海道アウトドアレジャー<br>
+                    たびらい会員限定プラン
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション5: エリア選択 -->
+    <section class="section">
+        <div class="container">
+            <h2>どこへ旅しますか？</h2>
+            
+            <div class="grid-3 mt-20">
+                <div class="wireframe-box">
+                    <div class="wireframe-image" style="min-height: 150px;">
+                        [画像: 北海道]
+                    </div>
+                    <h3>北海道</h3>
+                </div>
+                
+                <div class="wireframe-box">
+                    <div class="wireframe-image" style="min-height: 150px;">
+                        [画像: 神奈川]
+                    </div>
+                    <h3>神奈川</h3>
+                </div>
+                
+                <div class="wireframe-box">
+                    <div class="wireframe-image" style="min-height: 150px;">
+                        [画像: 山梨]
+                    </div>
+                    <h3>山梨</h3>
+                </div>
+            </div>
+            
+            <div class="grid-2 mt-20">
+                <div class="wireframe-box">
+                    <div class="wireframe-image" style="min-height: 150px;">
+                        [画像: 静岡]
+                    </div>
+                    <h3>静岡</h3>
+                </div>
+                
+                <div class="wireframe-box">
+                    <div class="wireframe-image" style="min-height: 150px;">
+                        [画像: 九州]
+                    </div>
+                    <h3>九州</h3>
+                </div>
+            </div>
+            
+            <div class="wireframe-box mt-20">
+                <div class="wireframe-image" style="min-height: 200px;">
+                    [画像: 沖縄]
+                </div>
+                <h3>沖縄</h3>
+            </div>
+            
+            <div class="wireframe-box mt-20">
+                <h3>エリア一覧（都道府県別リンク集）</h3>
+                <div class="wireframe-text">
+                    <strong>東北:</strong> 青森 | 岩手 | 宮城 | 秋田 | 山形 | 福島<br>
+                    <strong>関東:</strong> 茨城 | 栃木 | 群馬 | 埼玉 | 千葉 | 東京 | 神奈川<br>
+                    <strong>甲信越:</strong> 新潟 | 山梨 | 長野<br>
+                    <strong>東海:</strong> 岐阜 | 静岡 | 愛知 | 三重<br>
+                    <strong>北陸:</strong> 富山 | 石川 | 福井<br>
+                    <strong>関西:</strong> 滋賀 | 京都 | 大阪 | 兵庫 | 奈良 | 和歌山<br>
+                    <strong>中国:</strong> 鳥取 | 島根 | 岡山 | 広島 | 山口<br>
+                    <strong>四国:</strong> 徳島 | 香川 | 愛媛 | 高知<br>
+                    <strong>九州:</strong> 福岡 | 佐賀 | 長崎 | 熊本 | 大分 | 宮崎 | 鹿児島
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- セクション6: 情報配信 -->
+    <section class="section" style="background: #f9f9f9;">
+        <div class="container">
+            <h2>最新情報はこちらからチェック！</h2>
+            
+            <div class="wireframe-text text-center mt-20" style="padding: 20px;">
+                旬な観光情報を現地からお届け
+            </div>
+            
+            <div class="wireframe-button mt-20">
+                メールニュース登録
+            </div>
+            
+            <div class="grid-3 mt-20">
+                <div class="wireframe-box text-center">
+                    [アイコン: Facebook]<br>
+                    Facebook
+                </div>
+                
+                <div class="wireframe-box text-center">
+                    [アイコン: Instagram]<br>
+                    Instagram
+                </div>
+                
+                <div class="wireframe-box text-center">
+                    [アイコン: YouTube]<br>
+                    YouTube
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- フッター -->
+    <footer class="footer">
+        <div class="container">
+            <div class="wireframe-box">
+                <h3>たびらい公式アカウント</h3>
+                <div class="wireframe-text">
+                    Facebook | Instagram | YouTube | X(Twitter)
+                </div>
+            </div>
+            
+            <div class="grid-3 mt-20">
+                <div class="wireframe-box">
+                    <h3>旅するエリアを選ぶ</h3>
+                    <div class="wireframe-text">
+                        全国トップ<br>
+                        北海道<br>
+                        東北<br>
+                        関東<br>
+                        甲信越<br>
+                        東海<br>
+                        北陸<br>
+                        関西<br>
+                        中国<br>
+                        四国<br>
+                        九州<br>
+                        沖縄
+                    </div>
+                </div>
+                
+                <div class="wireframe-box">
+                    <h3>旅を楽しむ・予約する</h3>
+                    <div class="wireframe-text">
+                        観光情報<br>
+                        ツアー<br>
+                        ホテル・旅館<br>
+                        レンタカー<br>
+                        アクティビティ<br>
+                        バスツアー
+                    </div>
+                </div>
+                
+                <div class="wireframe-box">
+                    <h3>たびらいについて</h3>
+                    <div class="wireframe-text">
+                        たびらいの紹介<br>
+                        たびとも（コミュニティ）<br>
+                        お問合せ<br>
+                        会員登録
+                    </div>
+                </div>
+            </div>
+            
+            <div class="wireframe-box mt-20">
+                <h3>Language (Tabirai Japan)</h3>
+                <div class="wireframe-text">
+                    [繁体中文] 日本観光資訊 | 日本租車預約 | 活動體驗<br>
+                    [English] Japan Car Rental<br>
+                    [한국어] 일본 렌트카 예약
+                </div>
+            </div>
+            
+            <div class="wireframe-box mt-20 text-center">
+                <div class="wireframe-text">
+                    ご利用規約と推奨環境 | 全国トップ | 企業ロゴ | サイトマップ | 
+                    個人情報保護方針 | 旅行業約款・標識 | 旅行条件書 | 
+                    特定商取引法 | 日本国憲法9条 | 運営会社 | 採用情報 | 観光事業者の方へ
+                </div>
+            </div>
+            
+            <div class="wireframe-box mt-20 text-center">
+                <div class="wireframe-image" style="padding: 20px;">
+                    [ロゴ] たびらい
+                </div>
+                <div class="wireframe-text">
+                    現地発！ "ローカル旅行"の楽しみ方から予約まで
+                </div>
+            </div>
+            
+            <div class="wireframe-text text-center mt-20">
+                Copyright © Pam, Inc. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
