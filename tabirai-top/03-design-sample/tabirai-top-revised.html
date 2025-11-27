@@ -1,0 +1,1470 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"ローカル旅行"に出会える現地発信の旅行予約サイト | たびらい【改修案】</title>
+    <meta name="description" content="日本各地の&quot;ローカル旅行&quot;に出会える旅行予約サイト「たびらい」。現地発信をポリシーに、その地域ならでは体験を紹介します。">
+    <style>
+        /* ========================================
+           たびらい トンマナベース CSS
+           ======================================== */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
+            line-height: 1.6;
+            background: #fff;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        /* ========================================
+           ヘッダー
+           ======================================== */
+        .tb_headerWrap {
+            background: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tb_headerTools {
+            background: #f5f5f5;
+            padding: 8px 20px;
+            font-size: 12px;
+        }
+        
+        .tb_headerTools__list {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tb_headerTools__list__item a {
+            color: #666;
+        }
+        
+        .tb_header {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .tb_header__logo__image img {
+            height: 40px;
+        }
+        
+        .tb_header__logo__text {
+            font-size: 11px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .tb_header__nav__list {
+            list-style: none;
+            display: flex;
+            gap: 5px;
+        }
+        
+        .tb_header__nav__list__item a {
+            display: block;
+            padding: 10px 18px;
+            background: #00a0e9;
+            color: #fff;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .tb_header__nav__list__item a:hover {
+            background: #0090d9;
+            text-decoration: none;
+        }
+        
+        /* ========================================
+           メインビジュアル
+           ======================================== */
+        .pl-mainVisual {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pl-mainVisual__item {
+            display: block;
+            position: relative;
+        }
+        
+        .pl-mainVisual__item img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+        }
+        
+        .pl-mainVisual__item__content {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            padding: 20px 30px;
+            max-width: 500px;
+        }
+        
+        .pl-mainVisual__item__content__label {
+            font-size: 12px;
+            color: #00a0e9;
+            margin-bottom: 8px;
+        }
+        
+        .pl-mainVisual__item__content__text {
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+        
+        .pl-mainVisual__item__area {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #e74c3c;
+            color: #fff;
+            padding: 8px 20px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        
+        /* ========================================
+           バナーエリア
+           ======================================== */
+        .tabirai__bnrarea {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        
+        .tabirai__bnrarea--list {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        
+        .tabirai__bnrarea--item img {
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        /* ========================================
+           サービスナビゲーション（スプリングボード）
+           ======================================== */
+        .pl-springboard {
+            max-width: 1200px;
+            margin: 0 auto 40px;
+            padding: 0 20px;
+        }
+        
+        .pl-springboard__list {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .pl-springboard__list__item {
+            flex: 1;
+        }
+        
+        .pl-springboard__list__item--isHeadline {
+            flex: 1.5;
+            display: flex;
+            align-items: center;
+        }
+        
+        .pl-springboard__list__item__headline {
+            font-size: 22px;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .pl-springboard__list__item__headline span {
+            color: #00a0e9;
+        }
+        
+        .pl-springboardBox {
+            display: block;
+            background: #fff;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            height: 100%;
+            transition: all 0.3s;
+        }
+        
+        .pl-springboardBox:hover {
+            border-color: #00a0e9;
+            box-shadow: 0 4px 12px rgba(0,160,233,0.2);
+            text-decoration: none;
+        }
+        
+        .pl-springboardBox__title {
+            margin-bottom: 10px;
+        }
+        
+        .pl-springboardBox__title__icon img {
+            width: 48px;
+            height: 48px;
+        }
+        
+        .pl-springboardBox__title__text {
+            display: block;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-top: 8px;
+        }
+        
+        .pl-springboardBox__content {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.5;
+        }
+        
+        /* ========================================
+           【NEW】事業部導線セクション 共通スタイル
+           ======================================== */
+        .pl-serviceSection {
+            padding: 50px 0;
+            margin: 0;
+        }
+        
+        .pl-serviceSection__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .pl-serviceSection__header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        
+        .pl-serviceSection__label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #333;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-right: 20px;
+        }
+        
+        .pl-serviceSection__title {
+            font-size: 24px;
+            color: #333;
+        }
+        
+        .pl-serviceSection__subtitle {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 4px solid #00a0e9;
+        }
+        
+        /* ピックアップカード */
+        .pl-pickupGrid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .pl-pickupCard {
+            display: block;
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+        
+        .pl-pickupCard:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            text-decoration: none;
+        }
+        
+        .pl-pickupCard__image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        
+        .pl-pickupCard__content {
+            padding: 15px;
+        }
+        
+        .pl-pickupCard__title {
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        
+        .pl-pickupCard__desc {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        /* 探す導線（4カラム） */
+        .pl-searchNav {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .pl-searchNavItem {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .pl-searchNavItem__header {
+            background: #333;
+            color: #fff;
+            padding: 12px 15px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .pl-searchNavItem__content {
+            padding: 15px;
+        }
+        
+        .pl-searchNavItem__list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        
+        .pl-searchNavItem__list li a {
+            display: inline-block;
+            padding: 5px 10px;
+            background: #f5f5f5;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+        }
+        
+        .pl-searchNavItem__list li a:hover {
+            background: #00a0e9;
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        .pl-searchNavItem__more {
+            display: block;
+            text-align: center;
+            font-size: 13px;
+            color: #00a0e9;
+            font-weight: bold;
+        }
+        
+        /* 新着・人気リスト */
+        .pl-listGrid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .pl-listBox {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .pl-listBox__header {
+            background: #f9f9f9;
+            padding: 12px 15px;
+            font-size: 15px;
+            font-weight: bold;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .pl-listBox__content {
+            padding: 15px;
+        }
+        
+        .pl-listBox__list {
+            list-style: none;
+        }
+        
+        .pl-listBox__list li {
+            padding: 10px 0;
+            border-bottom: 1px dashed #eee;
+        }
+        
+        .pl-listBox__list li:last-child {
+            border-bottom: none;
+        }
+        
+        .pl-listBox__list li a {
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .pl-listBox__list li a:hover {
+            color: #00a0e9;
+        }
+        
+        .pl-listBox__list .tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: #e74c3c;
+            color: #fff;
+            font-size: 11px;
+            border-radius: 3px;
+            margin-left: 8px;
+        }
+        
+        .pl-listBox__list .tag--update {
+            background: #3498db;
+        }
+        
+        /* CTAボタン */
+        .pl-ctaArea {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .pl-ctaBtn {
+            display: inline-block;
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+        
+        .pl-ctaBtn--primary {
+            background: #00a0e9;
+            color: #fff;
+        }
+        
+        .pl-ctaBtn--primary:hover {
+            background: #0090d9;
+            text-decoration: none;
+        }
+        
+        .pl-ctaBtn--secondary {
+            background: #fff;
+            color: #00a0e9;
+            border: 2px solid #00a0e9;
+        }
+        
+        .pl-ctaBtn--secondary:hover {
+            background: #e8f7fc;
+            text-decoration: none;
+        }
+        
+        /* セクション背景色 */
+        .pl-serviceSection--rentacar {
+            background: #e8f8f5;
+        }
+        
+        .pl-serviceSection--hotel {
+            background: #fef9e7;
+        }
+        
+        .pl-serviceSection--activity {
+            background: #eaf2f8;
+        }
+        
+        /* セクションラベル色 */
+        .pl-serviceSection--rentacar .pl-serviceSection__label {
+            background: #27ae60;
+        }
+        
+        .pl-serviceSection--hotel .pl-serviceSection__label {
+            background: #e67e22;
+        }
+        
+        .pl-serviceSection--activity .pl-serviceSection__label {
+            background: #3498db;
+        }
+        
+        /* ========================================
+           たびらい特長エリア
+           ======================================== */
+        .pl-infoWrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .pl-hero {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d4edda 100%);
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+        }
+        
+        .pl-hero__inner__text {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        
+        .pl-hero__inner__point__list {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+        
+        .pl-hero__inner__point__list__item {
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .pl-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: #00a0e9;
+            color: #fff;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        
+        .pl-button:hover {
+            background: #0090d9;
+            text-decoration: none;
+        }
+        
+        /* ========================================
+           エリア選択
+           ======================================== */
+        .pl-tripbox {
+            margin: 50px 0;
+        }
+        
+        .pl-leadText {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+        
+        .pl-tripbox__inner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr) repeat(2, 1fr) 1fr;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .pl-tripbox__inner__area {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 150px;
+            border-radius: 8px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pl-tripbox__inner__area::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            transition: all 0.3s;
+        }
+        
+        .pl-tripbox__inner__area:hover::before {
+            background: rgba(0,0,0,0.5);
+        }
+        
+        .pl-tripbox__leadText {
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .--isHokkaido { background-image: url('https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_031.jpg'); }
+        .--isKanagawa { background-image: url('https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_020.jpg'); }
+        .--isYamanashi { background-image: url('https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_029.jpg'); }
+        .--isShizuoka { background-image: url('https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_032.jpg'); }
+        .--isKyushu { background-image: url('https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_033.jpg'); }
+        .--isOkinawa { background-image: url('https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_030.jpg'); grid-column: span 2; }
+        
+        /* 都道府県リンク */
+        .pl-tripbox__inner__box {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 20px;
+        }
+        
+        .pl-tripbox__inner__box__list {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .pl-tripbox__inner__box__list__name {
+            font-weight: bold;
+            color: #333;
+            min-width: 60px;
+        }
+        
+        .pl-tripbox__inner__box__list__name a {
+            color: #333;
+        }
+        
+        .pl-tripboxList {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .pl-tripboxList__item a {
+            color: #666;
+            font-size: 13px;
+        }
+        
+        /* ========================================
+           SNS・情報配信
+           ======================================== */
+        .pl-infoSec {
+            background: #f9f9f9;
+            padding: 50px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        .pl-flag {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .pl-flag__item {
+            font-size: 16px;
+        }
+        
+        .pl-sns {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .pl-snsButton {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 30px;
+            color: #fff;
+            font-weight: bold;
+        }
+        
+        .--isFacebook { background: #3b5998; }
+        .--isInstagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .--isYoutube { background: #ff0000; }
+        
+        /* ========================================
+           フッター
+           ======================================== */
+        .tb_footer {
+            background: #333;
+            color: #fff;
+            padding: 50px 20px;
+        }
+        
+        .tb_footer__inner {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .tb_footerSnsLinks {
+            display: flex;
+            gap: 40px;
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #555;
+        }
+        
+        .tb_footerSnsLinks__title {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+        
+        .tb_footerSnsLinks__content a {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .tb_footerSnsLinks__content img {
+            width: 37px;
+            height: 37px;
+        }
+        
+        .tb_footerSiteLinks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .tb_footerSiteLinks__title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #555;
+        }
+        
+        .tb_footerList {
+            list-style: none;
+        }
+        
+        .tb_footerList__item {
+            margin-bottom: 8px;
+        }
+        
+        .tb_footerList__item a {
+            color: #ccc;
+            font-size: 13px;
+        }
+        
+        .tb_footerList__item a:hover {
+            color: #fff;
+        }
+        
+        .tb_footer__copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #555;
+            font-size: 12px;
+            color: #999;
+        }
+        
+        /* ========================================
+           レスポンシブ
+           ======================================== */
+        @media (max-width: 768px) {
+            .tb_header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .tb_header__nav__list {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .pl-springboard__list {
+                flex-direction: column;
+            }
+            
+            .pl-pickupGrid,
+            .pl-searchNav,
+            .pl-listGrid {
+                grid-template-columns: 1fr;
+            }
+            
+            .pl-tripbox__inner {
+                grid-template-columns: 1fr;
+            }
+            
+            .--isOkinawa {
+                grid-column: span 1;
+            }
+            
+            .tb_footerSiteLinks {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========================================
+         ヘッダー
+         ======================================== -->
+    <header class="tb_headerWrap">
+        <div class="tb_headerTools">
+            <ul class="tb_headerTools__list">
+                <li class="tb_headerTools__list__item"><a href="https://www.tabirai.net/member/registration/input.aspx">会員登録</a></li>
+                <li class="tb_headerTools__list__item"><a href="https://www.tabirai.net/member/login.aspx">ログイン</a></li>
+                <li class="tb_headerTools__list__item"><a href="https://www.tabirai.net/about/">たびらいの紹介</a></li>
+                <li class="tb_headerTools__list__item"><a href="https://www.tabirai.net/member/reserveInformation.aspx">予約情報・キャンセル</a></li>
+            </ul>
+        </div>
+        <div class="tb_header">
+            <div class="tb_header__logo">
+                <p class="tb_header__logo__image">
+                    <a href="https://www.tabirai.net/" title="たびらい 全国TOPへ">
+                        <img src="https://www.tabirai.net/common/images/logomark.svg" alt="たびらい">
+                    </a>
+                </p>
+                <p class="tb_header__logo__text">全国発！「ローカル旅行」の楽しみ方から予約まで</p>
+            </div>
+            <nav class="tb_header__nav">
+                <ul class="tb_header__nav__list">
+                    <li class="tb_header__nav__list__item"><a href="https://www.tabirai.net/localinfo/">観光情報</a></li>
+                    <li class="tb_header__nav__list__item"><a href="https://www.tabirai.net/tour/">ツアー</a></li>
+                    <li class="tb_header__nav__list__item"><a href="https://www.tabirai.net/hotel/">ホテル・旅館</a></li>
+                    <li class="tb_header__nav__list__item"><a href="https://www.tabirai.net/car/">レンタカー</a></li>
+                    <li class="tb_header__nav__list__item"><a href="https://www.tabirai.net/activity/">アクティビティ</a></li>
+                    <li class="tb_header__nav__list__item"><a href="https://www.tabirai.net/bus/">バスツアー</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ========================================
+         メインコンテンツ
+         ======================================== -->
+    <main id="main">
+        
+        <!-- メインビジュアル -->
+        <div class="pl-mainVisual">
+            <a href="https://www.tabirai.net/localinfo/article/article-50132/" class="pl-mainVisual__item">
+                <img src="https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_029.jpg" alt="石垣島で離島巡り！絶対行くべき周辺の離島6選">
+                <div class="pl-mainVisual__item__content">
+                    <div class="pl-mainVisual__item__content__label">現地発！ローカル体験</div>
+                    <p class="pl-mainVisual__item__content__text">石垣島で離島巡り！<br>絶対行くべき周辺の離島6選</p>
+                </div>
+                <div class="pl-mainVisual__item__area">沖縄</div>
+            </a>
+        </div>
+
+        <!-- バナーエリア -->
+        <div class="tabirai__bnrarea">
+            <ul class="tabirai__bnrarea--list">
+                <li class="tabirai__bnrarea--item">
+                    <a href="https://tabitomo.tabirai.net/">
+                        <img src="https://www.tabirai.net/common/images/top/00_all/banner/0041483.jpg" alt="たびとも">
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- サービスナビゲーション -->
+        <div class="pl-springboard">
+            <ul class="pl-springboard__list">
+                <li class="pl-springboard__list__item pl-springboard__list__item--isHeadline">
+                    <h1 class="pl-springboard__list__item__headline">
+                        国内ローカル旅行は<span>「たびらい」</span>にお任せ！
+                    </h1>
+                </li>
+                <li class="pl-springboard__list__item">
+                    <a href="https://www.tabirai.net/localinfo/" class="pl-springboardBox">
+                        <dt class="pl-springboardBox__title">
+                            <span class="pl-springboardBox__title__icon">
+                                <img src="https://www.tabirai.net/common/images/top/00_all/common_icon_sightseeing_64.png" alt="観光情報">
+                            </span>
+                            <span class="pl-springboardBox__title__text">観光情報</span>
+                        </dt>
+                        <dd class="pl-springboardBox__content">現地ならでは。<br>旬な観光情報</dd>
+                    </a>
+                </li>
+                <li class="pl-springboard__list__item">
+                    <a href="https://www.tabirai.net/hotel/" class="pl-springboardBox">
+                        <dt class="pl-springboardBox__title">
+                            <span class="pl-springboardBox__title__icon">
+                                <img src="https://www.tabirai.net/common/images/top/00_all/common_icon_hotel_64.png" alt="ホテル・旅館ガイド">
+                            </span>
+                            <span class="pl-springboardBox__title__text">ホテル・旅館ガイド</span>
+                        </dt>
+                        <dd class="pl-springboardBox__content">「ローカル案内役」が選ぶ<br>厳選宿</dd>
+                    </a>
+                </li>
+                <li class="pl-springboard__list__item">
+                    <a href="https://www.tabirai.net/car/" class="pl-springboardBox">
+                        <dt class="pl-springboardBox__title">
+                            <span class="pl-springboardBox__title__icon">
+                                <img src="https://www.tabirai.net/common/images/top/00_all/common_icon_rentacar_64.png" alt="レンタカー予約">
+                            </span>
+                            <span class="pl-springboardBox__title__text">レンタカー予約</span>
+                        </dt>
+                        <dd class="pl-springboardBox__content">全国で最安値を<br>比較・予約</dd>
+                    </a>
+                </li>
+            </ul>
+            <ul class="pl-springboard__list">
+                <li class="pl-springboard__list__item">
+                    <a href="https://www.tabirai.net/tour/" class="pl-springboardBox">
+                        <dt class="pl-springboardBox__title">
+                            <span class="pl-springboardBox__title__icon">
+                                <img src="https://www.tabirai.net/common/images/top/00_all/common_icon_tour_64.png" alt="ツアー予約">
+                            </span>
+                            <span class="pl-springboardBox__title__text">ツアー予約</span>
+                        </dt>
+                        <dd class="pl-springboardBox__content">北海道・関東・関西(近畿)<br>・九州・沖縄の<br>お得なパッケージツアー</dd>
+                    </a>
+                </li>
+                <li class="pl-springboard__list__item">
+                    <a href="https://www.tabirai.net/activity/" class="pl-springboardBox">
+                        <dt class="pl-springboardBox__title">
+                            <span class="pl-springboardBox__title__icon">
+                                <img src="https://www.tabirai.net/common/images/top/00_all/common_icon_activity_64.png" alt="アクティビティ予約">
+                            </span>
+                            <span class="pl-springboardBox__title__text">アクティビティ予約</span>
+                        </dt>
+                        <dd class="pl-springboardBox__content">アクティビティ<br>(遊び・体験)プランを<br>一覧で比較・予約！</dd>
+                    </a>
+                </li>
+                <li class="pl-springboard__list__item">
+                    <a href="https://www.tabirai.net/bus/" class="pl-springboardBox">
+                        <dt class="pl-springboardBox__title">
+                            <span class="pl-springboardBox__title__icon">
+                                <img src="https://www.tabirai.net/common/images/top/00_all/common_icon_bustour_64.png" alt="バスツアー予約">
+                            </span>
+                            <span class="pl-springboardBox__title__text">バスツアー予約</span>
+                        </dt>
+                        <dd class="pl-springboardBox__content">あなたの街から出発、<br>人気の観光バスツアー！</dd>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- ========================================
+             【NEW】レンタカー事業部 導線セクション
+             ======================================== -->
+        <section class="pl-serviceSection pl-serviceSection--rentacar">
+            <div class="pl-serviceSection__inner">
+                <div class="pl-serviceSection__header">
+                    <span class="pl-serviceSection__label">🚗 レンタカー</span>
+                    <h2 class="pl-serviceSection__title">レンタカーを探す</h2>
+                </div>
+                
+                <!-- ピックアップ特集 -->
+                <h3 class="pl-serviceSection__subtitle">📌 ピックアップ特集</h3>
+                <div class="pl-pickupGrid">
+                    <a href="https://www.tabirai.net/car/okinawa/" class="pl-pickupCard">
+                        <img src="https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_029.jpg" alt="沖縄レンタカー" class="pl-pickupCard__image">
+                        <div class="pl-pickupCard__content">
+                            <h4 class="pl-pickupCard__title">沖縄レンタカー完全ガイド</h4>
+                            <p class="pl-pickupCard__desc">初めての沖縄ドライブに役立つ情報満載</p>
+                        </div>
+                    </a>
+                    <a href="https://www.tabirai.net/car/hokkaido/" class="pl-pickupCard">
+                        <img src="https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_020.jpg" alt="北海道レンタカー" class="pl-pickupCard__image">
+                        <div class="pl-pickupCard__content">
+                            <h4 class="pl-pickupCard__title">北海道ドライブモデルコース</h4>
+                            <p class="pl-pickupCard__desc">絶景スポットを巡る最適ルート</p>
+                        </div>
+                    </a>
+                    <a href="https://www.tabirai.net/car/service/winter_sale/" class="pl-pickupCard">
+                        <img src="https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_030.jpg" alt="格安レンタカー" class="pl-pickupCard__image">
+                        <div class="pl-pickupCard__content">
+                            <h4 class="pl-pickupCard__title">格安レンタカー予約術</h4>
+                            <p class="pl-pickupCard__desc">お得に借りるコツを伝授</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- 探す導線 -->
+                <h3 class="pl-serviceSection__subtitle">🔍 レンタカーを探す</h3>
+                <div class="pl-searchNav">
+                    <div class="pl-searchNavItem">
+                        <div class="pl-searchNavItem__header">都道府県から探す</div>
+                        <div class="pl-searchNavItem__content">
+                            <ul class="pl-searchNavItem__list">
+                                <li><a href="https://www.tabirai.net/car/hokkaido/">北海道</a></li>
+                                <li><a href="https://www.tabirai.net/car/tokyo/">東京</a></li>
+                                <li><a href="https://www.tabirai.net/car/osaka/">大阪</a></li>
+                                <li><a href="https://www.tabirai.net/car/okinawa/">沖縄</a></li>
+                                <li><a href="https://www.tabirai.net/car/fukuoka/">福岡</a></li>
+                                <li><a href="https://www.tabirai.net/car/aichi/">愛知</a></li>
+                            </ul>
+                            <a href="https://www.tabirai.net/car/" class="pl-searchNavItem__more">▶ 全都道府県一覧</a>
+                        </div>
+                    </div>
+                    <div class="pl-searchNavItem">
+                        <div class="pl-searchNavItem__header">主要駅から探す</div>
+                        <div class="pl-searchNavItem__content">
+                            <ul class="pl-searchNavItem__list">
+                                <li><a href="#">札幌駅</a></li>
+                                <li><a href="#">東京駅</a></li>
+                                <li><a href="#">新大阪駅</a></li>
+                                <li><a href="#">博多駅</a></li>
+                                <li><a href="#">那覇駅</a></li>
+                                <li><a href="#">名古屋駅</a></li>
+                            </ul>
+                            <a href="#" class="pl-searchNavItem__more">▶ 全駅一覧</a>
+                        </div>
+                    </div>
+                    <div class="pl-searchNavItem">
+                        <div class="pl-searchNavItem__header">主要空港から探す</div>
+                        <div class="pl-searchNavItem__content">
+                            <ul class="pl-searchNavItem__list">
+                                <li><a href="#">新千歳空港</a></li>
+                                <li><a href="#">羽田空港</a></li>
+                                <li><a href="#">成田空港</a></li>
+                                <li><a href="#">那覇空港</a></li>
+                                <li><a href="#">福岡空港</a></li>
+                                <li><a href="#">関西国際空港</a></li>
+                            </ul>
+                            <a href="#" class="pl-searchNavItem__more">▶ 全空港一覧</a>
+                        </div>
+                    </div>
+                    <div class="pl-searchNavItem">
+                        <div class="pl-searchNavItem__header">レンタカー会社から探す</div>
+                        <div class="pl-searchNavItem__content">
+                            <ul class="pl-searchNavItem__list">
+                                <li><a href="#">トヨタレンタカー</a></li>
+                                <li><a href="#">日産レンタカー</a></li>
+                                <li><a href="#">オリックス</a></li>
+                                <li><a href="#">ニッポンレンタカー</a></li>
+                                <li><a href="#">タイムズ</a></li>
+                                <li><a href="#">バジェット</a></li>
+                            </ul>
+                            <a href="#" class="pl-searchNavItem__more">▶ 全会社一覧</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTAボタン -->
+                <div class="pl-ctaArea">
+                    <a href="https://www.tabirai.net/car/" class="pl-ctaBtn pl-ctaBtn--primary">レンタカートップへ →</a>
+                    <a href="https://www.tabirai.net/car/special/feature/" class="pl-ctaBtn pl-ctaBtn--secondary">特集一覧を見る →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             【NEW】ホテル事業部 導線セクション
+             ======================================== -->
+        <section class="pl-serviceSection pl-serviceSection--hotel">
+            <div class="pl-serviceSection__inner">
+                <div class="pl-serviceSection__header">
+                    <span class="pl-serviceSection__label">🏨 ホテル</span>
+                    <h2 class="pl-serviceSection__title">たびらい編集部の「宿くらべ」 おすすめホテル・宿はどこ？</h2>
+                </div>
+                
+                <!-- ピックアップ宿くらべ -->
+                <h3 class="pl-serviceSection__subtitle">📌 ピックアップ宿くらべ</h3>
+                <div class="pl-pickupGrid">
+                    <a href="https://www.tabirai.net/hotel/okinawa/article/yadokurabe-resort/" class="pl-pickupCard">
+                        <img src="https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_029.jpg" alt="沖縄リゾートホテル" class="pl-pickupCard__image">
+                        <div class="pl-pickupCard__content">
+                            <h4 class="pl-pickupCard__title">沖縄のリゾートホテルおすすめ10選</h4>
+                            <p class="pl-pickupCard__desc">ビーチ目の前！絶景オーシャンビューの宿</p>
+                        </div>
+                    </a>
+                    <a href="https://www.tabirai.net/hotel/hokkaido/article/yadokurabe-onsen/" class="pl-pickupCard">
+                        <img src="https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_031.jpg" alt="北海道温泉宿" class="pl-pickupCard__image">
+                        <div class="pl-pickupCard__content">
+                            <h4 class="pl-pickupCard__title">北海道の温泉宿おすすめ8選</h4>
+                            <p class="pl-pickupCard__desc">登別・定山渓・洞爺湖の名湯</p>
+                        </div>
+                    </a>
+                    <a href="https://www.tabirai.net/hotel/okinawa/article/yadokurabe-miyako/" class="pl-pickupCard">
+                        <img src="https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_032.jpg" alt="宮古島ホテル" class="pl-pickupCard__image">
+                        <div class="pl-pickupCard__content">
+                            <h4 class="pl-pickupCard__title">宮古島のホテルおすすめ12選</h4>
+                            <p class="pl-pickupCard__desc">宮古ブルーを満喫できる厳選宿</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- 新着・人気リスト -->
+                <div class="pl-listGrid">
+                    <div class="pl-listBox">
+                        <div class="pl-listBox__header">📰 新着・更新の宿くらべ</div>
+                        <div class="pl-listBox__content">
+                            <ul class="pl-listBox__list">
+                                <li><a href="#">石垣島のホテルおすすめ15選</a><span class="tag tag--update">2025.01更新</span></li>
+                                <li><a href="#">箱根の高級旅館おすすめ10選</a><span class="tag">NEW</span></li>
+                                <li><a href="#">京都の町家ホテルおすすめ8選</a><span class="tag">NEW</span></li>
+                                <li><a href="#">熱海の温泉旅館おすすめ12選</a><span class="tag tag--update">2025.01更新</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="pl-listBox">
+                        <div class="pl-listBox__header">🔥 人気の宿くらべ</div>
+                        <div class="pl-listBox__content">
+                            <ul class="pl-listBox__list">
+                                <li><a href="#">沖縄本島のリゾートホテルおすすめ</a></li>
+                                <li><a href="#">北海道の温泉宿おすすめ</a></li>
+                                <li><a href="#">九州の温泉旅館おすすめ</a></li>
+                                <li><a href="#">関東の高級ホテルおすすめ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTAボタン -->
+                <div class="pl-ctaArea">
+                    <a href="https://www.tabirai.net/hotel/" class="pl-ctaBtn pl-ctaBtn--primary">ホテルトップへ →</a>
+                    <a href="https://www.tabirai.net/hotel/article/yadokurabe/" class="pl-ctaBtn pl-ctaBtn--secondary">宿くらべ一覧を見る →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             【NEW】アクティビティ事業部 導線セクション
+             ======================================== -->
+        <section class="pl-serviceSection pl-serviceSection--activity">
+            <div class="pl-serviceSection__inner">
+                <div class="pl-serviceSection__header">
+                    <span class="pl-serviceSection__label">🎯 アクティビティ</span>
+                    <h2 class="pl-serviceSection__title">現地で楽しむ体験・遊び</h2>
+                </div>
+                
+                <!-- ピックアップ特集 -->
+                <h3 class="pl-serviceSection__subtitle">📌 ピックアップ特集</h3>
+                <div class="pl-pickupGrid">
+                    <a href="https://www.tabirai.net/activity/okinawa/" class="pl-pickupCard">
+                        <img src="https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_029.jpg" alt="沖縄シュノーケリング" class="pl-pickupCard__image">
+                        <div class="pl-pickupCard__content">
+                            <h4 class="pl-pickupCard__title">沖縄シュノーケリング特集</h4>
+                            <p class="pl-pickupCard__desc">青の洞窟・慶良間など人気スポット</p>
+                        </div>
+                    </a>
+                    <a href="https://www.tabirai.net/activity/hokkaido/" class="pl-pickupCard">
+                        <img src="https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_020.jpg" alt="北海道アウトドア" class="pl-pickupCard__image">
+                        <div class="pl-pickupCard__content">
+                            <h4 class="pl-pickupCard__title">北海道アウトドア体験</h4>
+                            <p class="pl-pickupCard__desc">ラフティング・カヌー・乗馬</p>
+                        </div>
+                    </a>
+                    <a href="https://www.tabirai.net/activity/kyushu/" class="pl-pickupCard">
+                        <img src="https://www.tabirai.net/common/images/top/00_all/mainvisual/pic_mainvisual_033.jpg" alt="九州温泉体験" class="pl-pickupCard__image">
+                        <div class="pl-pickupCard__content">
+                            <h4 class="pl-pickupCard__title">九州の温泉×体験プラン</h4>
+                            <p class="pl-pickupCard__desc">温泉地で楽しむアクティビティ</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- エリア別アクティビティ -->
+                <h3 class="pl-serviceSection__subtitle">🗺️ エリアからアクティビティを探す</h3>
+                <div class="pl-searchNav">
+                    <div class="pl-searchNavItem">
+                        <div class="pl-searchNavItem__header">沖縄</div>
+                        <div class="pl-searchNavItem__content">
+                            <ul class="pl-searchNavItem__list">
+                                <li><a href="#">シュノーケリング</a></li>
+                                <li><a href="#">ダイビング</a></li>
+                                <li><a href="#">SUP</a></li>
+                                <li><a href="#">カヤック</a></li>
+                            </ul>
+                            <a href="https://www.tabirai.net/activity/okinawa/" class="pl-searchNavItem__more">▶ 沖縄のアクティビティ</a>
+                        </div>
+                    </div>
+                    <div class="pl-searchNavItem">
+                        <div class="pl-searchNavItem__header">北海道</div>
+                        <div class="pl-searchNavItem__content">
+                            <ul class="pl-searchNavItem__list">
+                                <li><a href="#">ラフティング</a></li>
+                                <li><a href="#">乗馬</a></li>
+                                <li><a href="#">スキー</a></li>
+                                <li><a href="#">カヌー</a></li>
+                            </ul>
+                            <a href="https://www.tabirai.net/activity/hokkaido/" class="pl-searchNavItem__more">▶ 北海道のアクティビティ</a>
+                        </div>
+                    </div>
+                    <div class="pl-searchNavItem">
+                        <div class="pl-searchNavItem__header">九州</div>
+                        <div class="pl-searchNavItem__content">
+                            <ul class="pl-searchNavItem__list">
+                                <li><a href="#">温泉</a></li>
+                                <li><a href="#">登山</a></li>
+                                <li><a href="#">カヌー</a></li>
+                                <li><a href="#">釣り</a></li>
+                            </ul>
+                            <a href="https://www.tabirai.net/activity/kyushu/" class="pl-searchNavItem__more">▶ 九州のアクティビティ</a>
+                        </div>
+                    </div>
+                    <div class="pl-searchNavItem">
+                        <div class="pl-searchNavItem__header">関東</div>
+                        <div class="pl-searchNavItem__content">
+                            <ul class="pl-searchNavItem__list">
+                                <li><a href="#">バンジー</a></li>
+                                <li><a href="#">パラグライダー</a></li>
+                                <li><a href="#">釣り</a></li>
+                                <li><a href="#">キャンプ</a></li>
+                            </ul>
+                            <a href="https://www.tabirai.net/activity/kanto/" class="pl-searchNavItem__more">▶ 関東のアクティビティ</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- CTAボタン -->
+                <div class="pl-ctaArea">
+                    <a href="https://www.tabirai.net/activity/" class="pl-ctaBtn pl-ctaBtn--primary">アクティビティトップへ →</a>
+                    <a href="https://www.tabirai.net/activity/special/" class="pl-ctaBtn pl-ctaBtn--secondary">特集一覧を見る →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             たびらい特長エリア
+             ======================================== -->
+        <div class="pl-infoWrapper">
+            <div class="pl-hero">
+                <div class="pl-hero__inner">
+                    <p class="pl-hero__inner__text">
+                        たびらいは現地発信の旅行予約サイトです。
+                    </p>
+                    <div class="pl-hero__inner__point">
+                        <ul class="pl-hero__inner__point__list">
+                            <li class="pl-hero__inner__point__list__item">選りすぐりの旅行プランを比較して予約できる</li>
+                            <li class="pl-hero__inner__point__list__item">現地編集の切り口による<br>観光情報が満載</li>
+                        </ul>
+                    </div>
+                    <p class="pl-hero__inner__text">
+                        たびらい会員登録は入会・年会費無料!
+                    </p>
+                    <div class="pl-hero__inner__button">
+                        <a href="https://www.tabirai.net/member/registration/input.aspx" class="pl-button">たびらい会員登録</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- バナー広告 -->
+            <div style="text-align: center; margin: 40px 0;">
+                <a href="https://www.tabirai.net/activity/special/membersonly/">
+                    <img src="https://www.tabirai.net/common/images/top/00_all/banner/membersonlyplan.jpg" alt="アクティビティ会員限定プラン" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                </a>
+            </div>
+
+            <!-- エリア選択 -->
+            <section class="pl-tripbox">
+                <h2 class="pl-leadText">どこへ旅しますか?</h2>
+                
+                <div class="pl-tripbox__inner" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 15px;">
+                    <a href="https://www.tabirai.net/hokkaido/" class="pl-tripbox__inner__area --isHokkaido">
+                        <span class="pl-tripbox__leadText">北海道</span>
+                    </a>
+                    <a href="https://www.tabirai.net/kanagawa/" class="pl-tripbox__inner__area --isKanagawa">
+                        <span class="pl-tripbox__leadText">神奈川</span>
+                    </a>
+                    <a href="https://www.tabirai.net/yamanashi/" class="pl-tripbox__inner__area --isYamanashi">
+                        <span class="pl-tripbox__leadText">山梨</span>
+                    </a>
+                </div>
+                <div class="pl-tripbox__inner" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-bottom: 15px;">
+                    <a href="https://www.tabirai.net/shizuoka/" class="pl-tripbox__inner__area --isShizuoka">
+                        <span class="pl-tripbox__leadText">静岡</span>
+                    </a>
+                    <a href="https://www.tabirai.net/kyushu/" class="pl-tripbox__inner__area --isKyushu">
+                        <span class="pl-tripbox__leadText">九州</span>
+                    </a>
+                    <a href="https://www.tabirai.net/okinawa/" class="pl-tripbox__inner__area --isOkinawa" style="grid-column: span 1;">
+                        <span class="pl-tripbox__leadText">沖縄</span>
+                    </a>
+                </div>
+                
+                <div class="pl-tripbox__inner__box">
+                    <dl class="pl-tripbox__inner__box__list">
+                        <dt class="pl-tripbox__inner__box__list__name"><a href="https://www.tabirai.net/tohoku/">東北</a></dt>
+                        <dd class="pl-tripbox__inner__box__list__content">
+                            <ul class="pl-tripboxList">
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/aomori/">青森</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/iwate/">岩手</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/miyagi/">宮城</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/akita/">秋田</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/yamagata/">山形</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/fukushima/">福島</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="pl-tripbox__inner__box__list">
+                        <dt class="pl-tripbox__inner__box__list__name"><a href="https://www.tabirai.net/kanto/">関東</a></dt>
+                        <dd class="pl-tripbox__inner__box__list__content">
+                            <ul class="pl-tripboxList">
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/ibaraki/">茨城</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/tochigi/">栃木</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/gunma/">群馬</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/saitama/">埼玉</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/chiba/">千葉</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/tokyo/">東京</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/kanagawa/">神奈川</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="pl-tripbox__inner__box__list">
+                        <dt class="pl-tripbox__inner__box__list__name"><a href="https://www.tabirai.net/kansai/">関西</a></dt>
+                        <dd class="pl-tripbox__inner__box__list__content">
+                            <ul class="pl-tripboxList">
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/shiga/">滋賀</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/kyoto/">京都</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/osaka/">大阪</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/hyogo/">兵庫</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/nara/">奈良</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/wakayama/">和歌山</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                    <dl class="pl-tripbox__inner__box__list">
+                        <dt class="pl-tripbox__inner__box__list__name"><a href="https://www.tabirai.net/kyushu/">九州</a></dt>
+                        <dd class="pl-tripbox__inner__box__list__content">
+                            <ul class="pl-tripboxList">
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/fukuoka/">福岡</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/saga/">佐賀</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/nagasaki/">長崎</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/kumamoto/">熊本</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/oita/">大分</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/miyazaki/">宮崎</a></li>
+                                <li class="pl-tripboxList__item"><a href="https://www.tabirai.net/kagoshima/">鹿児島</a></li>
+                            </ul>
+                        </dd>
+                    </dl>
+                </div>
+            </section>
+
+            <!-- SNS・情報配信 -->
+            <section class="pl-infoSec">
+                <h2 class="pl-leadText">最新情報はこちらからチェック!</h2>
+                
+                <div class="pl-flag">
+                    <div class="pl-flag__item">旬な観光情報を現地からお届け</div>
+                    <div class="pl-flag__item">
+                        <a href="https://www.tabirai.net/member/registration/input.aspx" class="pl-button">メールニュース登録</a>
+                    </div>
+                </div>
+                
+                <ul class="pl-sns">
+                    <li class="pl-sns__item">
+                        <a href="https://www.facebook.com/tabirai/" class="pl-snsButton --isFacebook" target="_blank">Facebook</a>
+                    </li>
+                    <li class="pl-sns__item">
+                        <a href="https://instagram.com/tabirai/" class="pl-snsButton --isInstagram" target="_blank">Instagram</a>
+                    </li>
+                    <li class="pl-sns__item">
+                        <a href="https://www.youtube.com/c/%E3%81%9F%E3%81%B3%E3%82%89%E3%81%84video" class="pl-snsButton --isYoutube" target="_blank">YouTube</a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <!-- ========================================
+         フッター
+         ======================================== -->
+    <footer class="tb_footer">
+        <div class="tb_footer__inner">
+            <div class="tb_footerSnsLinks">
+                <div>
+                    <dt class="tb_footerSnsLinks__title">たびらい公式アカウント</dt>
+                    <dd class="tb_footerSnsLinks__content">
+                        <a href="https://www.facebook.com/tabirai/" target="_blank"><img src="https://www.tabirai.net/common/images/footer/ico_facebook_01.png" alt="Facebook" width="37" height="37"></a>
+                        <a href="https://instagram.com/tabirai/" target="_blank"><img src="https://www.tabirai.net/common/images/footer/ico_instagram_01.png" alt="Instagram" width="37" height="37"></a>
+                        <a href="https://www.youtube.com/c/%E3%81%9F%E3%81%B3%E3%82%89%E3%81%84video" target="_blank"><img src="https://www.tabirai.net/common/images/footer/ico_youtube_01.png" alt="YouTube" width="37" height="37"></a>
+                    </dd>
+                </div>
+                <div>
+                    <dt class="tb_footerSnsLinks__title">メールニュース登録</dt>
+                    <dd class="tb_footerSnsLinks__content">
+                        <a href="https://www.tabirai.net/member/registration/input.aspx"><img src="https://www.tabirai.net/common/images/footer/ico_email_01.png" alt="メールマガジン" width="37" height="37"></a>
+                    </dd>
+                </div>
+            </div>
+            
+            <div class="tb_footerSiteLinks">
+                <div>
+                    <dt class="tb_footerSiteLinks__title">旅するエリアを選ぶ</dt>
+                    <dd class="tb_footerSiteLinks__content">
+                        <ul class="tb_footerList">
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/">全国トップ</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/hokkaido/">北海道</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/tohoku/">東北</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/kanto/">関東</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/kansai/">関西</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/kyushu/">九州</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/okinawa/">沖縄</a></li>
+                        </ul>
+                    </dd>
+                </div>
+                <div>
+                    <dt class="tb_footerSiteLinks__title">旅を楽しむ・予約する</dt>
+                    <dd class="tb_footerSiteLinks__content">
+                        <ul class="tb_footerList">
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/localinfo/">観光情報</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/tour/">ツアー</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/hotel/">ホテル・旅館</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/car/">レンタカー</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/activity/">アクティビティ</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/bus/">バスツアー</a></li>
+                        </ul>
+                    </dd>
+                </div>
+                <div>
+                    <dt class="tb_footerSiteLinks__title">たびらいについて</dt>
+                    <dd class="tb_footerSiteLinks__content">
+                        <ul class="tb_footerList">
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/about/">たびらいの紹介</a></li>
+                            <li class="tb_footerList__item"><a href="https://tabitomo.tabirai.net/">たびとも（コミュニティ）</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/contact/">お問合せ</a></li>
+                            <li class="tb_footerList__item"><a href="https://www.tabirai.net/member/registration/input.aspx">会員登録</a></li>
+                        </ul>
+                    </dd>
+                </div>
+            </div>
+            
+            <div class="tb_footer__copyright">
+                Copyright © Pam, Inc. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
